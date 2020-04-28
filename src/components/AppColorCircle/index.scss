@@ -1,0 +1,75 @@
+$blue:#6F6BFA;
+$green: #7EC23A;
+$orange: #F89E3C;
+$red: #C83A3C;
+$purple: #7D55C2;
+$purple-light: #B250A2;
+$blue-light: #369BEA;
+
+.app-color-circle__container {
+    display: inline-block;
+    
+    .body {
+        position: relative;
+        border-radius: 50%;
+        margin: 8px;
+        height: 60px;
+        width: 60px;
+        cursor: pointer;
+
+        &_blue {
+            border: 3px solid $blue;
+        }
+        &_green {
+            border: 3px solid $green;
+        }
+        &_orange {
+            border: 3px solid $orange;
+        }
+        &_red {
+            border: 3px solid $red;
+        }
+        &_purple {
+            border: 3px solid $purple;
+        }
+        &_purple-light {
+            border: 3px solid $purple-light;
+        }
+        &_blue-light {
+            border: 3px solid $blue-light;
+        }
+
+
+        .circle {
+            position: absolute;
+            left: 5%;
+            top: 5%;
+            height: 90%;
+            width: 90%;
+            border-radius: 50%;
+    
+            &_blue {
+                background-color: $blue;
+            }
+            &_green {
+                background-color: $green;
+            }
+            &_orange {
+                background-color: $orange;
+            }
+            &_red {
+                background-color: $red;
+            }
+            &_purple {
+                background-color: $purple;
+            }
+            &_purple-light {
+                background-color: $purple-light;
+            }
+            &_blue-light {
+                background-color: $blue-light;
+            }
+        }
+    }
+
+}
