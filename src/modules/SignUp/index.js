@@ -7,14 +7,14 @@ import AssistantStyle from './AssistantStyle';
 
 
 function SignUp() {
-	return (
-		<AppLayout>
-			<Switch>
-				<Route path="/signup/name" component={AssistantName} exact />
-				<Route path="/signup/style" component={AssistantStyle} exact />
-			</Switch>
-		</AppLayout>
-	);
+    return (
+        <AppLayout>
+            <Switch>
+                <Route path="/signup/name" component={AssistantName} exact />
+                <Route path="/signup/style" component={AssistantStyle} exact />
+            </Switch>
+        </AppLayout>
+    );
 }
 
 export default SignUp;

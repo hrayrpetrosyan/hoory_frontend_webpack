@@ -1,42 +1,45 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "plugins": [
+      "react",
+      "jsx-a11y",
+      "import"
     ],
     "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+      "window": true,
+      "localStorage": true,
+      "document": true
     },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+      "react/prop-types": 0,
+      "max-len": 0,
+      "global-require": 0,
+      "react/jsx-filename-extension": 0,
+      "react/jsx-props-no-spreading": 0,
+      "dot-notation": 0,
+      "react/jsx-one-expression-per-line": [
+        0,
+        {
+          "allow": "none"
+        }
+      ],
+      "indent": [
+        "error",
+        4,
+        {
+          "SwitchCase": 1,
+          "VariableDeclarator": 1
+        }
+      ],
+      "no-underscore-dangle": 0,
+      "react/jsx-indent": [
+        "error",
+        4
+      ],
+      "react/jsx-indent-props": [
+        "error",
+        4
+      ]
     }
-}
+  }

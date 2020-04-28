@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toastr } from 'react-redux-toastr';
 
-import { setName as setSignupName } from '../actions';
+import { setAssistantName } from '../actions';
 
 import hooryIconGreyImg from '../../../assets/hoory_icon_grey.svg';
 import './index.scss';
 
-function AssistantName() {
+function AssistantName({ history }) {
     const dispatch = useDispatch();
     const [name, setName] = useState('Hoory');
 
@@ -16,7 +16,10 @@ function AssistantName() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!name) toastr.error('Fail', 'Name field must not be empty!');
-        else dispatch(setSignupName(name));
+        else {
+            dispatch(setAssistantName(name));
+            history.push('/signup/style');
+        }
     };
 
     return (

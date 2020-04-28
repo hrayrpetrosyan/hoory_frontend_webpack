@@ -1,7 +1,16 @@
-/* eslint-disable import/prefer-default-export */
 import { SIGN_UP } from '../../constants/actions';
 
-export const setName = (payload) => ({
-    type: SIGN_UP.SET_NAME,
+export const setAssistantName = (payload) => ({
+    type: SIGN_UP.SET_ASSISTANT_NAME,
+    payload,
+});
+
+export const setAssistantGender = (payload) => ({
+    type: SIGN_UP.SET_ASSISTANT_GENDER,
+    payload,
+});
+
+export const setAssistantColor = (payload) => ({
+    type: SIGN_UP.SET_ASSISTANT_COLOR,
     payload,
 });
