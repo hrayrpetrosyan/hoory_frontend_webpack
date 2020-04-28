@@ -5,6 +5,8 @@ import { toastr } from 'react-redux-toastr';
 import { setAssistantName } from '../actions';
 
 import hooryIconGreyImg from '../../../assets/hoory_icon_grey.svg';
+import AppButton from '../../../components/AppButton';
+
 import './index.scss';
 
 function AssistantName({ history }) {
@@ -39,7 +41,7 @@ function AssistantName({ history }) {
                             onChange={handleNameChange}
                         />
                         <div>
-                            <button className="name-button" type="submit">Start</button>
+                            <AppButton type="submit">Start</AppButton>
                         </div>
                     </form>
                 </div>

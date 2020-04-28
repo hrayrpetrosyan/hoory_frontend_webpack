@@ -1,0 +1,12 @@
+.app-input {
+    background-color: #F7F7FA;
+    border: none;
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    width: 400px;
+
+    &::placeholder {
+        color: #ADADAE;
+    }
+}

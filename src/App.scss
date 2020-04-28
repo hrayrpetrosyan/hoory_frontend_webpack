@@ -6,13 +6,13 @@ body, h1, h2, h3, h4, p {
 }
 
 a {
-  text-decoration: none;
+  color: inherit;
   transition: none;
 }
 
 a:focus,
 button:focus {
-outline: none;
+  outline: none;
 }
 
 * {

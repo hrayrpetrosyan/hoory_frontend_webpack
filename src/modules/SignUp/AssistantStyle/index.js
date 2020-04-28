@@ -1,15 +1,18 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { getAssistantName } from '../selector';
 import { setAssistantGender, setAssistantColor } from '../actions';
 import { colors, defaultColor, images } from './helpers';
+
 import AppColorCircle from '../../../components/AppColorCircle';
+import AppButton from '../../../components/AppButton';
 
 import './index.scss';
 
 
-function AssistantStyle() {
+function AssistantStyle({ history }) {
     const dispatch = useDispatch();
     const [gender, setGender] = useState('female');
     const [color, setColor] = useState(defaultColor);
@@ -36,6 +39,7 @@ function AssistantStyle() {
     const handleClickNext = () => {
         dispatch(setAssistantGender(gender));
         dispatch(setAssistantColor(color.color));
+        history.push('/signup/account');
     };
 
     return (
@@ -66,7 +70,7 @@ function AssistantStyle() {
                     </div>
                 </div>
                 <div>
-                    <button className="style-button" type="button" onClick={handleClickNext}>Next</button>
+                    <AppButton onClick={handleClickNext}>Next</AppButton>
                 </div>
             </div>
         </div>

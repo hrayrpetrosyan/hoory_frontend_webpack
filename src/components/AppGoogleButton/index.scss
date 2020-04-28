@@ -1,0 +1,21 @@
+.app-google-button__container {
+
+    .google-button {
+        background-color: white;
+        width: 100%;
+        box-shadow: 0 4px 4px #f8f8f8, 0 8px 10px #f8f8f8;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > div {
+                padding: 0 4px;
+            }
+        }
+    }
+}
