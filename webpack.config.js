@@ -40,7 +40,7 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[hash].[ext]',
-                        outputPath: 'imgs',
+                        outputPath: 'static/media',
                     },
                 },
             },
@@ -48,7 +48,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './public/index.html',
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[hash].css',

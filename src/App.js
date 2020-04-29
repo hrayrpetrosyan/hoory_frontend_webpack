@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { Route, Switch, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faEllipsisV, faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
+import {
+    faSearch, faEllipsisV, faTrash, faPen,
+} from '@fortawesome/free-solid-svg-icons';
 
 import SignUpRoute from './modules/SignUp';
 import SignInRoute from './modules/SignIn';
@@ -14,7 +16,7 @@ library.add(faSearch, faEllipsisV, faTrash, faPen);
 const history = createBrowserHistory();
 
 function App() {
-    // useEffect(() => history.push('/signup/name'), []);
+    useEffect(() => history.push('/signup/name'), []);
 
     return (
         <Router history={history}>
