@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { reducer as toastrReducer } from 'react-redux-toastr';
 
-import signUp from './modules/SignUp/reducer';
+import assistant from './modules/Assistant/reducer';
 
 
 export default combineReducers({
-    signUp,
+    assistant,
     toastr: toastrReducer,
 });

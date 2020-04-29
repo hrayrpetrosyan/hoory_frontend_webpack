@@ -1,12 +1,26 @@
-.app-input {
+.app-input__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #F7F7FA;
-    border: none;
     padding: 16px;
     font-size: 16px;
     border-radius: 6px;
     width: 400px;
 
-    &::placeholder {
-        color: #ADADAE;
+    .app-input {
+        background-color: #F7F7FA;
+        border: none;
+        width: 100%;
+    
+        &::placeholder {
+            color: #ADADAE;
+        }
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
     }
 }

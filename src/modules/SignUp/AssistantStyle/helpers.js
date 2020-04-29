@@ -9,5 +9,3 @@ export const colors = [
 ];
 
 export const defaultColor = colors[0];
-
-export const images = require.context('../../../assets/logos', true);

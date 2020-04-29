@@ -1,0 +1,19 @@
+.app-search-input__container {
+    display: flex;
+    align-items: center;
+    background-color: #F7F7FA;
+    border-radius: 8px;
+    padding: 10px;
+    padding-left: 20px;
+    width: 100%;
+
+    .app-search-input {
+        border: none;
+        background-color: #F7F7FA;
+        width: 100%;
+
+        &::placeholder {
+            color: #7A7A7A;
+        }
+    }
+}

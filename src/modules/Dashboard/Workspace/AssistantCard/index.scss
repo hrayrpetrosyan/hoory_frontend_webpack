@@ -1,0 +1,29 @@
+.assistant-card__container {
+    background-color: #F7F7FA;
+    padding: 2px;
+    width: calc(100% + 26px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    margin: 10px 0;
+
+    .assistant-block {
+        display: flex;
+        align-items: center;
+        > div {
+            display: flex;
+            align-items: center;
+        }
+        .assistant-img {
+            height: 70px;
+        }
+    }
+
+    .actions-block {
+        > div {
+            display: inline-block;
+            margin: 3px;
+        }
+    }
+}

@@ -8,4 +8,5 @@ export const pathStep = {
     name: 1,
     style: 2,
     account: 3,
+    success: 4,
 };

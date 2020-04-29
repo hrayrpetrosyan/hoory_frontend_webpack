@@ -1,0 +1,10 @@
+.app-toolbar-layout__container {
+    height: 100%;
+    width: 100%;
+
+    > .body {
+        padding-top: 80px;
+        width: 100%;
+        height: calc(100% - 80px);
+    }
+}

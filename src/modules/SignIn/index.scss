@@ -1,0 +1,35 @@
+.sign-in__container {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #444;
+
+    > .body {
+        .form-container {
+            padding: 50px;
+
+            .google-section {
+                padding: 10px 0;
+                margin: 20px 0;
+            }
+
+            form {
+                > div {
+                    padding: 5px 0;
+                }
+
+                .password-input {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .caption {
+                font-size: 12px;
+                padding: 16px 0;
+            }
+        }
+    }
+}

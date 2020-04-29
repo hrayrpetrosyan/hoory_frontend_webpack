@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toastr } from 'react-redux-toastr';
 
-import { setAssistantName } from '../actions';
+import { setAssistantName } from '../../Assistant/actions';
 
 import hooryIconGreyImg from '../../../assets/hoory_icon_grey.svg';
 import AppButton from '../../../components/AppButton';
@@ -17,7 +17,7 @@ function AssistantName({ history }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!name) toastr.error('Fail', 'Name field must not be empty!');
+        if (!name) toastr.error('Error', 'Name field must not be empty!');
         else {
             dispatch(setAssistantName(name));
             history.push('/signup/style');

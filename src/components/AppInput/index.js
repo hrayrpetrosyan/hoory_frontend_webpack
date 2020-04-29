@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import passIconImg from '../../assets/password_visibility.svg';
 import './index.scss';
 
-function AppInput({ placeholder }) {
+function AppInput({ password, ...restProps }) {
+    const [type, setType] = useState(password ? 'password' : 'text');
+
+    const handleClickPass = () => setType((prev) => (prev === 'text' ? 'password' : 'text'));
+
     return (
-        <input
-            type="text"
-            className="app-input"
-            placeholder={placeholder}
-        />
+        <div className="app-input__container">
+            <input
+                className="app-input"
+                type={type}
+                {...restProps}
+            />
+            {password && (
+                <button type="button" onClick={handleClickPass}>
+                    <img src={passIconImg} alt="pass" />
+                </button>
+            )}
+        </div>
     );
 }
 

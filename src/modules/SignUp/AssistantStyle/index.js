@@ -2,9 +2,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getAssistantName } from '../selector';
-import { setAssistantGender, setAssistantColor } from '../actions';
-import { colors, defaultColor, images } from './helpers';
+import { getAssistantName } from '../../Assistant/selector';
+import { setAssistantGender, setAssistantColor, setAssistantIconFileName } from '../../Assistant/actions';
+import { colors, defaultColor } from './helpers';
+import { images } from '../helpers';
 
 import AppColorCircle from '../../../components/AppColorCircle';
 import AppButton from '../../../components/AppButton';
@@ -39,6 +40,7 @@ function AssistantStyle({ history }) {
     const handleClickNext = () => {
         dispatch(setAssistantGender(gender));
         dispatch(setAssistantColor(color.color));
+        dispatch(setAssistantIconFileName(generateFileName(gender)));
         history.push('/signup/account');
     };
 
