@@ -8,5 +8,6 @@ module.exports = merge(common, {
     output: {
         path: path.join(__dirname, '/build'),
         filename: '[name].bundle.js',
+        publicPath: '/',
     },
 });
