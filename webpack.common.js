@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: ['@babel/polyfill', './src/index.js'],
@@ -51,5 +52,6 @@ module.exports = {
         new BundleAnalyzerPlugin({
             analyzerMode: 'none',
         }),
+        new Dotenv(),
     ],
 };
