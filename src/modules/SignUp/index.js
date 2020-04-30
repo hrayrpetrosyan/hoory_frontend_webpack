@@ -3,9 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { assistantIconFileNameSelector, assistantNameSelector } from '../Assistant/selector';
-import { profileIdSelector } from '../Profile/selector';
 
 import CustomRoute from '../../routes/CustomRoute';
+import AuthenticatedRoute from '../../routes/AuthenticatedRoute';
 
 import AppLayout from '../../components/AppLayout';
 import AssistantName from '../Assistant/AssistantName';
@@ -17,7 +17,6 @@ import SuccessView from './SuccessView';
 function SignUp() {
     const assistantName = useSelector((state) => assistantNameSelector(state));
     const assistantFileName = useSelector((state) => assistantIconFileNameSelector(state));
-    const profileId = useSelector((state) => profileIdSelector(state));
 
     return (
         <AppLayout>
@@ -37,13 +36,7 @@ function SignUp() {
                     redirect={!assistantFileName}
                     to="/signup/name"
                 />
-                <CustomRoute
-                    path="/signup/success"
-                    component={SuccessView}
-                    exact
-                    redirect={!profileId}
-                    to="/signup/account"
-                />
+                <AuthenticatedRoute path="/signup/success" component={SuccessView} exact />
             </Switch>
         </AppLayout>
     );

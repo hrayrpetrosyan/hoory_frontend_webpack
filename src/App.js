@@ -1,5 +1,7 @@
 import React from 'react';
-import { Switch, Router, Redirect } from 'react-router-dom';
+import {
+    Switch, Router, Redirect, Route,
+} from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -23,7 +25,7 @@ function App() {
     return (
         <Router history={history}>
             <Switch>
-                <UnAuthenticatedRoute path="/signup/:signup_route" component={SignUpRoute} />
+                <Route path="/signup/:signup_route" component={SignUpRoute} />
                 <UnAuthenticatedRoute path="/signin" component={SignInRoute} exact />
                 <AuthenticedRoute path="/dashboard" component={DashboardRoute} exact />
                 <Redirect to="/signup/name" />
