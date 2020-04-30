@@ -18,6 +18,7 @@
       "react/jsx-filename-extension": 0,
       "react/jsx-props-no-spreading": 0,
       "dot-notation": 0,
+      "import/prefer-default-export": "off",
       "react/jsx-one-expression-per-line": [
         0,
         {

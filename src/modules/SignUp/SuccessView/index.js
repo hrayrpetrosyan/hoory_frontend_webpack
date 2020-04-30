@@ -1,19 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { getAssistantName, getAssistantIconFileName } from '../../Assistant/selector';
-import { images } from '../helpers';
+import { assistantNameSelector, assistantIconFileNameSelector } from '../../Assistant/selector';
+import lazyLoadIcons from '../../../utils/lazyLoadIcons';
 
 import AppButton from '../../../components/AppButton';
 
 import './index.scss';
 
 function SuccessView({ history }) {
-    const assistantName = useSelector((state) => getAssistantName(state));
-    const assistantFileName = useSelector((state) => getAssistantIconFileName(state));
+    const assistantName = useSelector((state) => assistantNameSelector(state));
+    const assistantFileName = useSelector((state) => assistantIconFileNameSelector(state));
 
     const getIcon = () => {
-        const image = images(`./${assistantFileName || 'male-1'}.svg`);
+        const image = lazyLoadIcons(`./${assistantFileName || 'male-1'}.svg`);
         return image.default;
     };
 

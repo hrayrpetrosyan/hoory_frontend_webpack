@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toastr } from 'react-redux-toastr';
 
-import { setAssistantName } from '../../Assistant/actions';
+import { setAssistantName } from '../actions';
 
 import hooryIconGreyImg from '../../../assets/hoory_icon_grey.svg';
 import AppButton from '../../../components/AppButton';

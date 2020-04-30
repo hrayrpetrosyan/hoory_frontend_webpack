@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { toastr } from 'react-redux-toastr';
 
-// import { setAccountFirstName, setAccountLastName, setAccountEmail, setAccountPassword } from '../actions';
+import { attemptSignUp } from '../actions';
 import { errorMessages, emailRegEx, passwordRegEx } from './helpers';
 
 import AppInput from '../../../components/AppInput';
@@ -10,7 +11,8 @@ import AppButton from '../../../components/AppButton';
 
 
 function CreateAccountForm() {
-    const history = useHistory();
+    const dispatch = useDispatch();
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -36,10 +38,15 @@ function CreateAccountForm() {
         e.preventDefault();
         const isValid = validateInputs();
         if (isValid) {
-            // API CALL
-            history.push('/signup/success');
+            dispatch(attemptSignUp({
+                firstName,
+                lastName,
+                email,
+                password,
+            }));
         }
     };
+
     return (
         <form onSubmit={handleSubmitCreateAccount}>
             <div className="name-surname-inputs">

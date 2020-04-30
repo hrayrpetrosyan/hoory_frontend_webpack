@@ -1,14 +1,13 @@
-/* eslint-disable import/prefer-default-export */
 import { createSelector } from 'reselect';
 
 const getAuth = (state) => state.assistant;
 
-export const getAssistantName = createSelector(
+export const assistantNameSelector = createSelector(
     getAuth,
     (auth) => auth.name,
 );
 
-export const getAssistantIconFileName = createSelector(
+export const assistantIconFileNameSelector = createSelector(
     getAuth,
     (auth) => auth.fileName,
 );

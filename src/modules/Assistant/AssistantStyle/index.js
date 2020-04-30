@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getAssistantName } from '../../Assistant/selector';
-import { setAssistantGender, setAssistantColor, setAssistantIconFileName } from '../../Assistant/actions';
+import { assistantNameSelector } from '../selector';
+import { setAssistantGender, setAssistantColor, setAssistantIconFileName } from '../actions';
 import { colors, defaultColor } from './helpers';
-import { images } from '../helpers';
+import lazyLoadIcons from '../../../utils/lazyLoadIcons';
 
 import AppColorCircle from '../../../components/AppColorCircle';
 import AppButton from '../../../components/AppButton';
@@ -18,7 +18,7 @@ function AssistantStyle({ history }) {
     const [gender, setGender] = useState('female');
     const [color, setColor] = useState(defaultColor);
 
-    const assistantName = useSelector((state) => getAssistantName(state));
+    const assistantName = useSelector((state) => assistantNameSelector(state));
 
     const handleSelectColor = (item) => setColor(item);
     const handleClickFemale = () => setGender('female');
@@ -33,7 +33,7 @@ function AssistantStyle({ history }) {
 
     const getIconImage = (iconGender) => {
         const fileName = `${generateFileName(iconGender)}`;
-        const iconImg = images(`./${fileName}.svg`);
+        const iconImg = lazyLoadIcons(`./${fileName}.svg`);
         return iconImg.default;
     };
 
