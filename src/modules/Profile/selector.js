@@ -21,3 +21,8 @@ export const profileEmailSelector = createSelector(
     getAuth,
     (auth) => auth.email,
 );
+
+export const getProfileActionStatusSelector = createSelector(
+    getAuth,
+    (auth) => auth.getProfileActionStatus,
+);

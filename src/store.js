@@ -2,6 +2,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
+import authMiddleware from './middlewares/auth';
+
 import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
 
@@ -12,6 +14,7 @@ const store = createStore(
     composeWithDevTools(
         applyMiddleware(
             sagaMiddleWare,
+            authMiddleware,
         ),
     ),
 );

@@ -9,3 +9,7 @@ export const setSignUpActionStatus = (payload) => ({
     type: SIGN_UP.SET_SIGN_UP_ACTION_STATUS,
     payload,
 });
+
+export const resetSignUp = () => ({
+    type: SIGN_UP.RESET_SIGN_UP,
+});

@@ -8,6 +8,11 @@
     border-radius: 8px;
     margin: 10px 0;
 
+    &__empty {
+        color: #7A7A7A;
+        padding: 20px 0;
+    }
+
     .assistant-block {
         display: flex;
         align-items: center;

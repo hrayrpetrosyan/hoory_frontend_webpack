@@ -1,24 +1,53 @@
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { parse } from 'query-string';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { assistantNameSelector } from '../selector';
-import { setAssistantGender, setAssistantColor, setAssistantIconFileName } from '../actions';
+import { ACTION_STATUSES } from '../../../constants/actions';
+import {
+    assistantNameSelector, assistantColorSelector, assistantGenderSelector,
+    createAssistantActionStatusSelector, editAssistantActionStatusSelector,
+} from '../selector';
+import {
+    setAssistantGender, setAssistantColor, setAssistantIconFileName,
+    attemptCreateAssistant, attemptEditAssistant, resetAssistant,
+} from '../actions';
 import { colors, defaultColor } from './helpers';
 import lazyLoadIcons from '../../../utils/lazyLoadIcons';
 
+import withLoading from '../../../hocs/withLoading';
 import AppColorCircle from '../../../components/AppColorCircle';
 import AppButton from '../../../components/AppButton';
 
 import './index.scss';
 
+let initRender = true;
 
-function AssistantStyle({ history }) {
+function AssistantStyle({ history, location }) {
     const dispatch = useDispatch();
-    const [gender, setGender] = useState('female');
-    const [color, setColor] = useState(defaultColor);
+    const { signup_route } = useParams();
+    const { _id } = parse(location.search);
 
     const assistantName = useSelector((state) => assistantNameSelector(state));
+    const assistantColor = useSelector((state) => assistantColorSelector(state));
+    const assistantGender = useSelector((state) => assistantGenderSelector(state));
+    const createAssistantActionStatus = useSelector((state) => createAssistantActionStatusSelector(state));
+    const editAssistantActionStatus = useSelector((state) => editAssistantActionStatusSelector(state));
+
+    const [gender, setGender] = useState(assistantGender || 'female');
+    const [color, setColor] = useState(defaultColor(assistantColor));
+
+    useEffect(() => {
+        if (initRender) initRender = false;
+        else if (createAssistantActionStatus === ACTION_STATUSES.SUCCESS
+            || editAssistantActionStatus === ACTION_STATUSES.SUCCESS) {
+            dispatch(resetAssistant());
+            history.push('/dashboard');
+        }
+    }, [createAssistantActionStatus, editAssistantActionStatus]);
+
 
     const handleSelectColor = (item) => setColor(item);
     const handleClickFemale = () => setGender('female');
@@ -32,16 +61,24 @@ function AssistantStyle({ history }) {
     };
 
     const getIconImage = (iconGender) => {
-        const fileName = `${generateFileName(iconGender)}`;
+        const fileName = generateFileName(iconGender);
         const iconImg = lazyLoadIcons(`./${fileName}.svg`);
         return iconImg.default;
     };
 
     const handleClickNext = () => {
-        dispatch(setAssistantGender(gender));
-        dispatch(setAssistantColor(color.color));
-        dispatch(setAssistantIconFileName(generateFileName(gender)));
-        history.push('/signup/account');
+        const fileName = generateFileName(gender);
+        const body = { gender, color: color.color, fileName };
+        if (signup_route) {
+            dispatch(setAssistantGender(gender));
+            dispatch(setAssistantColor(color.color));
+            dispatch(setAssistantIconFileName(fileName));
+            history.push('/signup/account');
+        } else if (_id) {
+            dispatch(attemptEditAssistant({ _id, ...body }));
+        } else {
+            dispatch(attemptCreateAssistant(body));
+        }
     };
 
     return (
@@ -72,11 +109,13 @@ function AssistantStyle({ history }) {
                     </div>
                 </div>
                 <div>
-                    <AppButton onClick={handleClickNext}>Next</AppButton>
+                    <AppButton onClick={handleClickNext}>
+                        { signup_route ? 'Next' : 'Submit' }
+                    </AppButton>
                 </div>
             </div>
         </div>
     );
 }
 
-export default AssistantStyle;
+export default withLoading(createAssistantActionStatusSelector)(AssistantStyle);

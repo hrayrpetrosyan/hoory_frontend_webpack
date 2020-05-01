@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { signInActionStatusSelector } from './selector';
+
+import withLoading from '../../hocs/withLoading';
 import hooryLogoImg from '../../assets/hoory_logo.svg';
 import AppGoogleButton from '../../components/AppGoogleButton';
 import AppAuthFormDivider from '../../components/AppAuthFormDivider';
@@ -25,4 +28,4 @@ function SignIn() {
     );
 }
 
-export default SignIn;
+export default withLoading(signInActionStatusSelector)(SignIn);

@@ -1,26 +1,34 @@
+/* eslint-disable camelcase */
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { toastr } from 'react-redux-toastr';
 
 import { setAssistantName } from '../actions';
+import { assistantNameSelector } from '../selector';
 
 import hooryIconGreyImg from '../../../assets/hoory_icon_grey.svg';
 import AppButton from '../../../components/AppButton';
 
 import './index.scss';
 
-function AssistantName({ history }) {
+function AssistantName({ history, location }) {
     const dispatch = useDispatch();
-    const [name, setName] = useState('Hoory');
+    const { signup_route } = useParams();
+    const assistantName = useSelector((state) => assistantNameSelector(state));
+
+    const [name, setName] = useState(assistantName || 'Hoory');
 
     const handleNameChange = ({ target }) => setName(target.value);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const path = signup_route ? '/signup/style' : `/dashboard/assistant/style${location.search}`;
+
         if (!name) toastr.error('Error', 'Name field must not be empty!');
         else {
             dispatch(setAssistantName(name));
-            history.push('/signup/style');
+            history.push(path);
         }
     };
 

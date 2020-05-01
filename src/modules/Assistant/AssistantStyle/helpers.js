@@ -8,4 +8,8 @@ export const colors = [
     { id: '7', color: 'blue-light' },
 ];
 
-export const defaultColor = colors[0];
+export const defaultColor = (color) => {
+    if (!color) return colors[0];
+    const colorObj = colors.find((item) => item.color === color);
+    return colorObj;
+};

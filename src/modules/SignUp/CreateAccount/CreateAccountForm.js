@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import { toastr } from 'react-redux-toastr';
 
 import { attemptSignUp } from '../actions';
-import { errorMessages, emailRegEx, passwordRegEx } from './helpers';
+import { auth } from '../../../constants/errorMessages';
+import { emailRegEx, passwordRegEx } from '../../../constants/regex';
 
 import AppInput from '../../../components/AppInput';
 import AppButton from '../../../components/AppButton';
@@ -30,7 +31,7 @@ function CreateAccountForm() {
         else if (!email || !emailRegEx.test(email)) errorField = 'email';
         else if (!passwordRegEx.test(password)) errorField = 'password';
 
-        if (errorField) toastr.error('Error', errorMessages[errorField]);
+        if (errorField) toastr.error('Error', auth[errorField]);
         return !errorField;
     };
 

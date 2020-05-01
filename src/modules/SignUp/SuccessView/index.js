@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { assistantNameSelector, assistantIconFileNameSelector } from '../../Assistant/selector';
@@ -8,7 +9,7 @@ import AppButton from '../../../components/AppButton';
 
 import './index.scss';
 
-function SuccessView({ history }) {
+function SuccessView() {
     const assistantName = useSelector((state) => assistantNameSelector(state));
     const assistantFileName = useSelector((state) => assistantIconFileNameSelector(state));
 
@@ -16,8 +17,6 @@ function SuccessView({ history }) {
         const image = lazyLoadIcons(`./${assistantFileName || 'male-1'}.svg`);
         return image.default;
     };
-
-    const goToDashboard = () => history.push('/dashboard');
 
     return (
         <div className="success-view__container">
@@ -29,7 +28,9 @@ function SuccessView({ history }) {
                     <p>Proceed to Admin Dashboard to start training { assistantName || '<name>' }</p>
                 </div>
                 <div>
-                    <AppButton onClick={goToDashboard}>Go to Admin Dashboard</AppButton>
+                    <Link to="/dashboard">
+                        <AppButton>Go to Admin Dashboard</AppButton>
+                    </Link>
                 </div>
             </div>
         </div>
