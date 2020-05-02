@@ -16,7 +16,7 @@ import CreateAccount from './CreateAccount';
 import SuccessView from './SuccessView';
 
 
-function SignUp() {
+function SignUp({ match }) {
     const assistantName = useSelector((state) => assistantNameSelector(state));
     const assistantFileName = useSelector((state) => assistantIconFileNameSelector(state));
     const profileId = useSelector((state) => profileIdSelector(state));
@@ -24,10 +24,14 @@ function SignUp() {
     return (
         <AppLayout>
             <Switch>
-                <UnAuthenticatedRoute path="/signup/name" component={AssistantName} exact />
+                <UnAuthenticatedRoute
+                    path="/signup/name"
+                    render={(routeProps) => <AssistantName {...routeProps} match={match} />}
+                    exact
+                />
                 <CustomRoute
                     path="/signup/style"
-                    component={AssistantStyle}
+                    render={(routeProps) => <AssistantStyle {...routeProps} match={match} />}
                     exact
                     redirect={!assistantName || profileId}
                     to="/signup/name"
@@ -36,7 +40,7 @@ function SignUp() {
                     path="/signup/account"
                     component={CreateAccount}
                     exact
-                    redirect={!assistantFileName || profileId}
+                    redirect={!assistantFileName}
                     to="/signup/name"
                 />
                 <AuthenticatedRoute path="/signup/success" component={SuccessView} exact />

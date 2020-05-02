@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toastr } from 'react-redux-toastr';
 
@@ -12,11 +11,10 @@ import AppButton from '../../../components/AppButton';
 
 import './index.scss';
 
-function AssistantName({ history, location }) {
+function AssistantName({ history, location, match }) {
     const dispatch = useDispatch();
-    const { signup_route } = useParams();
+    const { signup_route } = match.params;
     const assistantName = useSelector((state) => assistantNameSelector(state));
-
     const [name, setName] = useState(assistantName || 'Hoory');
 
     const handleNameChange = ({ target }) => setName(target.value);
@@ -24,7 +22,6 @@ function AssistantName({ history, location }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const path = signup_route ? '/signup/style' : `/dashboard/assistant/style${location.search}`;
-
         if (!name) toastr.error('Error', 'Name field must not be empty!');
         else {
             dispatch(setAssistantName(name));

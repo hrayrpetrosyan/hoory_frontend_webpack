@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { resetAssistant } from '../../Assistant/actions';
 import { assistantNameSelector, assistantIconFileNameSelector } from '../../Assistant/selector';
 import lazyLoadIcons from '../../../utils/lazyLoadIcons';
 
@@ -9,13 +9,19 @@ import AppButton from '../../../components/AppButton';
 
 import './index.scss';
 
-function SuccessView() {
+function SuccessView({ history }) {
+    const dispatch = useDispatch();
     const assistantName = useSelector((state) => assistantNameSelector(state));
     const assistantFileName = useSelector((state) => assistantIconFileNameSelector(state));
 
     const getIcon = () => {
         const image = lazyLoadIcons(`./${assistantFileName || 'male-1'}.svg`);
         return image.default;
+    };
+
+    const goToDashboard = () => {
+        history.push('/dashboard');
+        dispatch(resetAssistant());
     };
 
     return (
@@ -28,9 +34,7 @@ function SuccessView() {
                     <p>Proceed to Admin Dashboard to start training { assistantName || '<name>' }</p>
                 </div>
                 <div>
-                    <Link to="/dashboard">
-                        <AppButton>Go to Admin Dashboard</AppButton>
-                    </Link>
+                    <AppButton onClick={goToDashboard}>Go to Admin Dashboard</AppButton>
                 </div>
             </div>
         </div>

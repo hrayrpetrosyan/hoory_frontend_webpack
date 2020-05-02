@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import { parse } from 'query-string';
-import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { ACTION_STATUSES } from '../../../constants/actions';
@@ -25,9 +24,9 @@ import './index.scss';
 
 let initRender = true;
 
-function AssistantStyle({ history, location }) {
+function AssistantStyle({ history, location, match }) {
     const dispatch = useDispatch();
-    const { signup_route } = useParams();
+    const { signup_route } = match.params;
     const { _id } = parse(location.search);
 
     const assistantName = useSelector((state) => assistantNameSelector(state));

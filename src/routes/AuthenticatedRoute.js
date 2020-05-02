@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 
 import { profileIdSelector } from '../modules/Profile/selector';
 
-function AuthenticedRoute({ path, component }) {
+function AuthenticedRoute(props) {
     const profileId = useSelector((state) => profileIdSelector(state));
 
     if (!profileId) return <Redirect to="/signin" />;
     return (
-        <Route path={path} component={component} />
+        <Route {...props} />
     );
 }
 

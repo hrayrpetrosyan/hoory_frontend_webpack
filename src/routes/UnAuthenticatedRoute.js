@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 
 import { profileIdSelector } from '../modules/Profile/selector';
 
-function UnAuthenticedRoute({ path, component, exact = false }) {
+function UnAuthenticedRoute(props) {
     const profileId = useSelector((state) => profileIdSelector(state));
 
     if (profileId) return <Redirect to="/dashboard" />;
     return (
-        <Route path={path} component={component} exact={exact} />
+        <Route {...props} />
     );
 }
 

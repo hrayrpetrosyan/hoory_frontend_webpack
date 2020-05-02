@@ -3,11 +3,11 @@ import { Route, Redirect } from 'react-router-dom';
 
 
 function CustomRoute({
-    path, component, exact = false, redirect, to,
+    redirect, to, ...restProps
 }) {
     if (redirect) return <Redirect to={to} />;
     return (
-        <Route path={path} component={component} exact={exact} />
+        <Route {...restProps} />
     );
 }
 
