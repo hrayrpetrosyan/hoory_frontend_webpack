@@ -12,4 +12,4 @@ function AppSearchInput(props) {
     );
 }
 
-export default AppSearchInput;
+export default React.memo(AppSearchInput);

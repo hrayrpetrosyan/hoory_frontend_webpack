@@ -12,4 +12,4 @@ function AppAuthFormDivider() {
     );
 }
 
-export default AppAuthFormDivider;
+export default React.memo(AppAuthFormDivider);

@@ -15,4 +15,4 @@ function AppButton({ children, fullwidth, ...restProps }) {
     );
 }
 
-export default AppButton;
+export default React.memo(AppButton);

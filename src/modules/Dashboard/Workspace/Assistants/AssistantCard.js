@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -28,15 +28,15 @@ function AssistantCard({
     const handleShowAll = () => setShowAll(true);
     const handleShowDots = () => setShowAll(false);
 
-    const handleClickEdit = () => {
+    const handleClickEdit = useCallback(() => {
         dispatch(setAssistantName(name));
         dispatch(setAssistantGender(gender));
         dispatch(setAssistantColor(color));
         dispatch(setAssistantIconFileName(fileName));
         history.push(`/dashboard/assistant/name?_id=${_id}`);
-    };
+    }, [name, color, fileName, _id]);
 
-    const handleClickDelete = () => dispatch(attemptDeleteAssistant(_id));
+    const handleClickDelete = useCallback(() => dispatch(attemptDeleteAssistant(_id)), [_id]);
 
     if (empty) return <div className="assistant-card__container__empty">No data</div>;
     return (

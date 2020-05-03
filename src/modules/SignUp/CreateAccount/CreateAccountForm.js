@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { toastr } from 'react-redux-toastr';
@@ -21,8 +21,8 @@ function CreateAccountForm() {
 
     const handleChangeFirstName = ({ target }) => setFirstName(target.value);
     const handleChangeLastName = ({ target }) => setLastName(target.value);
-    const handleChangeEmail = ({ target }) => setEmail(target.value);
-    const handleChangePassword = ({ target }) => setPassword(target.value);
+    const handleChangeEmail = useCallback(({ target }) => setEmail(target.value), []);
+    const handleChangePassword = useCallback(({ target }) => setPassword(target.value), []);
 
     const validateInputs = () => {
         let errorField;

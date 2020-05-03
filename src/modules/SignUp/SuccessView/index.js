@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { resetAssistant } from '../../Assistant/actions';
@@ -19,10 +19,10 @@ function SuccessView({ history }) {
         return image.default;
     };
 
-    const goToDashboard = () => {
+    const goToDashboard = useCallback(() => {
         history.push('/dashboard');
         dispatch(resetAssistant());
-    };
+    }, []);
 
     return (
         <div className="success-view__container">

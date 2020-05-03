@@ -14,4 +14,4 @@ function AppToolbarLayout({ children }) {
     );
 }
 
-export default AppToolbarLayout;
+export default React.memo(AppToolbarLayout);

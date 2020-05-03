@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { parse } from 'query-string';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -48,16 +48,16 @@ function AssistantStyle({ history, location, match }) {
     }, [createAssistantActionStatus, editAssistantActionStatus]);
 
 
-    const handleSelectColor = (item) => setColor(item);
+    const handleSelectColor = useCallback((item) => setColor(item), []);
     const handleClickFemale = () => setGender('female');
     const handleClickMale = () => setGender('male');
 
-    const generateFileName = (iconGender) => {
+    const generateFileName = useCallback((iconGender) => {
         let fileName = iconGender;
         if (gender === iconGender) fileName += '-selected';
         fileName += `-${color.id}`;
         return fileName;
-    };
+    }, [gender, color]);
 
     const getIconImage = (iconGender) => {
         const fileName = generateFileName(iconGender);
@@ -65,7 +65,7 @@ function AssistantStyle({ history, location, match }) {
         return iconImg.default;
     };
 
-    const handleClickNext = () => {
+    const handleClickNext = useCallback(() => {
         const fileName = generateFileName(gender);
         const body = { gender, color: color.color, fileName };
         if (signup_route) {
@@ -78,7 +78,7 @@ function AssistantStyle({ history, location, match }) {
         } else {
             dispatch(attemptCreateAssistant(body));
         }
-    };
+    }, [gender, color, _id]);
 
     return (
         <div className="assistant-style__container">

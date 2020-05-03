@@ -14,4 +14,4 @@ function AppLayout({ children }) {
     );
 }
 
-export default AppLayout;
+export default React.memo(AppLayout);

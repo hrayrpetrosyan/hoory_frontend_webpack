@@ -10,4 +10,4 @@ function AppLoading() {
     );
 }
 
-export default AppLoading;
+export default React.memo(AppLoading);

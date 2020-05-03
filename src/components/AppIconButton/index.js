@@ -11,4 +11,4 @@ function AppIconButton({ icon, color, ...restProps }) {
     );
 }
 
-export default AppIconButton;
+export default React.memo(AppIconButton);

@@ -24,4 +24,4 @@ function AppInput({ password, ...restProps }) {
     );
 }
 
-export default AppInput;
+export default React.memo(AppInput);

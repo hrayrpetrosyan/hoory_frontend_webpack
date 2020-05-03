@@ -26,4 +26,4 @@ function SideBarBodyStep({ title, path }) {
     );
 }
 
-export default SideBarBodyStep;
+export default React.memo(SideBarBodyStep);

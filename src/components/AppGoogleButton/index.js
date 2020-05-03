@@ -20,4 +20,4 @@ function AppGoogleButton() {
     );
 }
 
-export default AppGoogleButton;
+export default React.memo(AppGoogleButton);

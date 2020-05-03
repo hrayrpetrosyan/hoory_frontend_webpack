@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -19,10 +19,10 @@ function Workspace() {
 
     useEffect(() => dispatch(attemptGetAssistants(keyword)), [keyword]);
 
-    const handleChangeSearch = ({ target }) => {
+    const handleChangeSearch = useCallback(({ target }) => {
         if (timeout) clearTimeout(timeout);
         timeout = setTimeout(() => dispatch(setKeyword(target.value)), 300);
-    };
+    }, []);
 
     return (
         <div className="workspace__container">

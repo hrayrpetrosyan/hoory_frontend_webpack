@@ -22,4 +22,4 @@ function AppColorCircle({ item, handleSelectColor, selected }) {
     );
 }
 
-export default AppColorCircle;
+export default React.memo(AppColorCircle);
